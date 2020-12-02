@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/PerceivedComplexity
 # frozen_string_literal: true
 
 require '../lib/player'
@@ -14,19 +13,18 @@ public
 
 def play(arr)
   puts " #{name} is playing \n CHOOSE YOUR POSITION!"
-  pos = gets.chomp
-  if pos.to_i < 10
-    pos = pos.to_i - 1
+  pos = gets.chomp.to_i
+  if pos < 10
+    pos -= 1
     arr.each_with_index do |num, i|
       if i == pos && num == ' '
         arr[i] = @symbol
       elsif i == pos && num != ' '
         puts 'POSITION UNAVAILABLE!! TRY AGAIN!!'
-        play(arr)
       end
     end
   else
-    puts "#{name.upcase} DON'T CHEAT!!!!!!! inserted an invalid number! \n ------------------"
+    puts 'Invalid number!! Try Again!'
     play(arr)
   end
 end
@@ -47,9 +45,9 @@ while winning == false
     puts "Congratulations #{player1.name}, you won!"
     break
   elsif board[3] == board[4] && board[4] == board[5] && board[3] != ' '
-    break
     winning = true
     puts "Congratulations #{player1.name}, you won!"
+    break
   elsif board[6] == board[7] && board[7] == board[8] && board[6] != ' '
     winning = true
     puts "Congratulations #{player1.name}, you won!"
@@ -88,9 +86,9 @@ while winning == false
     puts "Congratulations #{player2.name}, you won!"
     break
   elsif board[3] == board[4] && board[4] == board[5] && board[3] != ' '
-    break
     winning = true
     puts "Congratulations #{player2.name}, you won!"
+    break
   elsif board[6] == board[7] && board[7] == board[8] && board[6] != ' '
     winning = true
     puts "Congratulations #{player2.name}, you won!"
@@ -124,4 +122,3 @@ while winning == false
 end
 
 # rubocop:enable Metrics/MethodLength
-# rubocop:enable Metrics/PerceivedComplexity
