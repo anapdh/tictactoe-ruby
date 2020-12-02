@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/PerceivedComplexity
 # frozen_string_literal: true
 
@@ -122,5 +121,4 @@ while winning == false
 
 end
 
-# rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/PerceivedComplexity
