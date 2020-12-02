@@ -1,2 +1,2 @@
 # TicTacToe-Ruby
-Consists of building Ruby version of Tic Tac Toe.
+Consists of building a Ruby version of Tic Tac Toe.
