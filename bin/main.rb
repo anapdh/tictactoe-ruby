@@ -1,41 +1,42 @@
 #!/usr/bin/env ruby
-require "../lib/player.rb"
+# frozen_string_literal: true
+
+require '../lib/player'
 winning = false
-board = [' ',' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 player1 = Player.new('Neko', 'X')
 player2 = Player.new('Ana', 'O')
 
 public
-  def play(board=[])
-      puts " #{name} is playing \n CHOOSE YOUR POSITION!"
-      pos = gets.chomp 
-      if pos.to_i < 10 
-        pos = pos.to_i - 1
-        board.each_with_index do |num, i|
-          if i == pos && num == ' '
-            board[i] = @symbol
-          elsif i == pos && num != ' '
-            puts 'POSITION UNAVAILABLE!! TRY AGAIN!!'
-            play(board)
-          end
-      end
-      else
-        puts "#{name.upcase} DON'T CHEAT!!!!!!! inserted an invalid number! \n ------------------"
+
+def play(board = [])
+  puts " #{name} is playing \n CHOOSE YOUR POSITION!"
+  pos = gets.chomp
+  if pos.to_i < 10
+    pos = pos.to_i - 1
+    board.each_with_index do |num, i|
+      if i == pos && num == ' '
+        board[i] = @symbol
+      elsif i == pos && num != ' '
+        puts 'POSITION UNAVAILABLE!! TRY AGAIN!!'
         play(board)
       end
+    end
+  else
+    puts "#{name.upcase} DON'T CHEAT!!!!!!! inserted an invalid number! \n ------------------"
+    play(board)
   end
+end
 
-  def display(board)
-  
-    puts"      #{board[0]} | #{board[1]} | #{board[2]}
+def display(board)
+  puts "      #{board[0]} | #{board[1]} | #{board[2]}
       ----------
       #{board[3]} | #{board[4]} | #{board[5]}
       ----------
       #{board[6]} | #{board[7]} | #{board[8]}"
-  end
+end
 
-
-while winning == false 
+while winning == false
   player1.play(board)
   display(board)
   if board[0] == board[1] && board[1] == board[2] && board[0] != ' '
@@ -118,6 +119,3 @@ while winning == false
   end
 
 end
-
-
-
