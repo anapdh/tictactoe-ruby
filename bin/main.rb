@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-puts 'Hello World! <3'
 
 
 #Player1 need to select X or O.
@@ -10,47 +9,43 @@ puts 'Hello World! <3'
 
 
 
-# symbol = [0, 1, 2]
-
-# board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-#     0 | 1 | 2
-#     ----------
-#     3 | 4 | 5
-#     ----------
-#     6 | 7 | 8
-
 class Game
+  
+  @symbol = [0, 1, 2]
+  @@board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
   def initialize(name, symbol)
     @name = name
     @symbol = symbol
   end
 
-  def check(pos)
-    #select a place"
-    #num = gets.chomp
-    board.each_with_index do |num, i|
-    # if i == pos && num == 0
-    # board[i] = player1 or player2(symbol)
-    # else
-    #"not available position"
+  def play()
+    puts "CHOOSE YOUR POSITION!"
+    pos = gets.chomp 
+    pos = pos.to_i - 1
+    @@board.each_with_index do |num, i|
+      if i == pos && num.to_i == 0
+        @@board[i] = @symbol
+        print @@board
+      end
+    end
   end
 
   def display
     puts 
-    "#{board[0]} | #{board[1]} | #{board[2]}
+    "#{@@board[0]} | #{@@board[1]} | #{@@board[2]}
     ----------
-    #{board[3]} | #{board[4]} | #{board[5]}
+    #{@@board[3]} | #{@@board[4]} | #{@@board[5]}
     ----------
-    #{board[6]} | #{board[7]} | #{board[8]}"
+    #{@@board[6]} | #{@@board[7]} | #{@@board[8]}"
   end
 
 end
 
-player1 = Game.new("p1", 1)
-player2 = Game.new("p2", 2)
-
+player1 = Game.new("p1", "X")
+# player1.play
+player2 = Game.new("p2", "O")
+player2.play
 
 #Player 1 selects 1 of the 9 spaces to fill.
 
