@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/PerceivedComplexity
 # frozen_string_literal: true
 
 require '../lib/player'
+
 winning = false
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 player1 = Player.new('Neko', 'X')
@@ -9,22 +12,22 @@ player2 = Player.new('Ana', 'O')
 
 public
 
-def play(board = [])
+def play(arr)
   puts " #{name} is playing \n CHOOSE YOUR POSITION!"
   pos = gets.chomp
   if pos.to_i < 10
     pos = pos.to_i - 1
-    board.each_with_index do |num, i|
+    arr.each_with_index do |num, i|
       if i == pos && num == ' '
-        board[i] = @symbol
+        arr[i] = @symbol
       elsif i == pos && num != ' '
         puts 'POSITION UNAVAILABLE!! TRY AGAIN!!'
-        play(board)
+        play(arr)
       end
     end
   else
     puts "#{name.upcase} DON'T CHEAT!!!!!!! inserted an invalid number! \n ------------------"
-    play(board)
+    play(arr)
   end
 end
 
@@ -119,3 +122,6 @@ while winning == false
   end
 
 end
+
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/PerceivedComplexity
