@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/PerceivedComplexity
-# frozen_string_literal: true
 
 require '../lib/player'
 
