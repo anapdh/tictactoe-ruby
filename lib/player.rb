@@ -9,7 +9,7 @@ class Player
   end
 
   def play(arr)
-    puts " #{name} is playing... \n CHOOSE YOUR POSITION!\n"
+    puts " #{name} is playing... \n CHOOSE YOUR POSITION! \n "
     pos = gets.chomp.to_i
     if pos < 10
       pos -= 1
@@ -17,12 +17,12 @@ class Player
         if i == pos && num == ' '
           arr[i] = @symbol
         elsif i == pos && num != ' '
-          puts "\nPOSITION UNAVAILABLE!! TRY AGAIN!!\n"
+          puts " \n POSITION UNAVAILABLE!! Please, try again. \n "
           play(arr)
         end
       end
     else
-      puts "\nINVALID NUMBER!! Please, try again\n"
+      puts " \n INVALID NUMBER!! Please, try again. \n "
       play(arr)
     end
   end
