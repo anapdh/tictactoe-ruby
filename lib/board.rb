@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 # Class for the board
 # rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Metrics/CyclomaticComplexity
 
 class Board
   attr_accessor :board
@@ -21,3 +20,4 @@ class Board
 end
 
 # rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/CyclomaticComplexity
