@@ -4,6 +4,7 @@
 require_relative '../lib/player'
 require_relative '../lib/board'
 
+game_on = true
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 puts "Please, enter name of Player 'X':"
 player1 = Player.new(gets.chomp, 'X')
@@ -33,9 +34,13 @@ def play(arr)
   end
 end
 
-player1.play(board)
-new_board_game.display(board)
-player2.play(board)
-new_board_game.display(board)
+while game_on
+  player1.play(board)
+  new_board_game.display(board)
+  player2.play(board)
+  new_board_game.display(board)
+  puts "#{player1.name} Won!!"
+  break
+end
 
 # rubocop:enable Metrics/PerceivedComplexity
