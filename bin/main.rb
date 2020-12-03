@@ -6,7 +6,7 @@ require '../lib/player'
 winning = false
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 player1 = Player.new('Neko', 'X')
-player2 = Player.new('Ana', 'O')
+player2 = Player.new('Ana Paula', 'O')
 
 public
 
@@ -20,6 +20,7 @@ def play(arr)
         arr[i] = @symbol
       elsif i == pos && num != ' '
         puts 'POSITION UNAVAILABLE!! TRY AGAIN!!'
+        play(arr)
       end
     end
   else
@@ -29,13 +30,13 @@ def play(arr)
 end
 
 def display(board)
-  puts "      #{board[0]} | #{board[1]} | #{board[2]}
+  puts "      #{board[6]} | #{board[7]} | #{board[8]}
       ----------
       #{board[3]} | #{board[4]} | #{board[5]}
       ----------
-      #{board[6]} | #{board[7]} | #{board[8]}"
+      #{board[0]} | #{board[1]} | #{board[2]}"
 end
-
+## def did_win
 while winning == false
   player1.play(board)
   display(board)
