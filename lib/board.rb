@@ -1,4 +1,4 @@
-#Class for the board
+# Class for the board
 class Board
   attr_accessor :board
 
@@ -13,5 +13,4 @@ class Board
         ----------
         #{board[0]} | #{board[1]} | #{board[2]}"
   end
-
 end
