@@ -1,4 +1,5 @@
 # Class for Players
+
 class Player
   attr_accessor :name, :symbol
 
@@ -8,7 +9,7 @@ class Player
   end
 
   def play(arr)
-    puts " #{name} is playing \n CHOOSE YOUR POSITION!"
+    puts " #{name} is playing... \n CHOOSE YOUR POSITION!\n"
     pos = gets.chomp.to_i
     if pos < 10
       pos -= 1
@@ -16,14 +17,13 @@ class Player
         if i == pos && num == ' '
           arr[i] = @symbol
         elsif i == pos && num != ' '
-          puts 'POSITION UNAVAILABLE!! TRY AGAIN!!'
+          puts "\nPOSITION UNAVAILABLE!! TRY AGAIN!!\n"
           play(arr)
         end
       end
     else
-      puts 'Invalid number!! Try Again!'
+      puts "\nINVALID NUMBER!! Please, try again\n"
       play(arr)
     end
   end
-
 end
