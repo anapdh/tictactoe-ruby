@@ -7,13 +7,14 @@ class Rules
   end
 
   def display_rules
-    return " \n === WELCOME TO TIC TAC TOE ===
+" \n === WELCOME TO TIC TAC TOE ===
 
 Game Rules:
 
 1. Type the name of Player1, which will be signed to the symbol 'X';
 2. Type the name of Player2, which will be signed to the symbol 'O';
-3. Now the first player ('X') can select any space to insert the value, follow your number keyboard to compare the available spaces:
+3. Now the first player ('X') can select any space to insert the value,
+ follow your number keyboard to compare the available spaces:
 
         7 | 8 | 9
         -----------
@@ -21,7 +22,8 @@ Game Rules:
         -----------
         1 | 2 | 3
 
-4. Remember not to insert any invalid number (above 9) or repeat the same number that is already taken by a symbol (no cheating!!);
+4. Remember not to insert any invalid number (above 9)
+ or repeat the same number that is already taken by a symbol (no cheating!!);
 5. The winner will be the first player/symbol to complete a sequence of a row, column, or diagonal.
 
 Good luck and have fun! :) \n "

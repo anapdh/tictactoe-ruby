@@ -7,12 +7,12 @@ require_relative '../lib/rules'
 game_on = true
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-game_rules = Rules.new()
+game_rules = Rules.new
 
-puts "Would you like to read the game rules/instructions? (yes, no)"
+puts 'Would you like to read the game rules/instructions? (yes, no)'
 answer = gets.chomp
 
-  if answer == "yes"
+  if answer == 'yes'
     puts game_rules.display_rules
   else
     puts "\n Ok, let's start the game! \n "
