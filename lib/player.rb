@@ -1,5 +1,5 @@
 # Class for Players
-
+# rubocop:disable Metrics/PerceivedComplexity
 class Player
   attr_accessor :name, :symbol
 
@@ -27,3 +27,4 @@ class Player
     end
   end
 end
+# rubocop:enable Metrics/PerceivedComplexity

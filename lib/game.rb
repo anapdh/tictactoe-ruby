@@ -1,10 +1,11 @@
 # Class for game logic
-
-def game(player1, player2, boardC, board)
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+def game(player1, player2, board_obj, board)
   game_on = true
   while game_on
     player1.play(board)
-    boardC.display(board)
+    board_obj.display(board)
 
     if board[0] == board[1] && board[1] == board[2] && board[0] != ' '
       game_on = false
@@ -45,7 +46,7 @@ def game(player1, player2, boardC, board)
     end
 
     player2.play(board)
-    boardC.display(board)
+    board_obj.display(board)
 
     if board[0] == board[1] && board[1] == board[2] && board[0] != ' '
       game_on = false
@@ -86,4 +87,5 @@ def game(player1, player2, boardC, board)
     end
   end
 end
-
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
