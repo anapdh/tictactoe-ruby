@@ -1,12 +1,18 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 # rubocop:disable Metrics/PerceivedComplexity
 
-require '../lib/player'
+require_relative '../lib/player'
+require_relative '../lib/board'
 
-winning = false
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-player1 = Player.new('Neko', 'X')
-player2 = Player.new('Ana Paula', 'O')
+puts "Please, enter name of Player 'X':"
+player1 = Player.new(gets.chomp, 'X')
+puts "Please, enter name of Player 'O':"
+player2 = Player.new(gets.chomp, 'O')
+new_board_game = Board.new(board)
+puts new_board_game.display(board)
 
 public
 
@@ -29,96 +35,9 @@ def play(arr)
   end
 end
 
-def display(board)
-  puts "      #{board[6]} | #{board[7]} | #{board[8]}
-      ----------
-      #{board[3]} | #{board[4]} | #{board[5]}
-      ----------
-      #{board[0]} | #{board[1]} | #{board[2]}"
-end
-## def did_win
-while winning == false
-  player1.play(board)
-  display(board)
-  if board[0] == board[1] && board[1] == board[2] && board[0] != ' '
-    winning = true
-    puts "Congratulations #{player1.name}, you won!"
-    break
-  elsif board[3] == board[4] && board[4] == board[5] && board[3] != ' '
-    winning = true
-    puts "Congratulations #{player1.name}, you won!"
-    break
-  elsif board[6] == board[7] && board[7] == board[8] && board[6] != ' '
-    winning = true
-    puts "Congratulations #{player1.name}, you won!"
-    break
-  elsif board[0] == board[3] && board[3] == board[6] && board[0] != ' '
-    winning = true
-    puts "Congratulations #{player1.name}, you won!"
-    break
-  elsif board[1] == board[4] && board[4] == board[7] && board[1] != ' '
-    winning = true
-    puts "Congratulations #{player1.name}, you won!"
-    break
-  elsif board[2] == board[5] && board[5] == board[8] && board[2] != ' '
-    winning = true
-    puts "Congratulations #{player1.name}, you won!"
-    break
-  elsif board[0] == board[4] && board[4] == board[8] && board[0] != ' '
-    winning = true
-    puts "Congratulations #{player1.name}, you won!"
-    break
-  elsif board[2] == board[4] && board[4] == board[6] && board[2] != ' '
-    winning = true
-    puts "Congratulations #{player1.name}, you won!"
-    break
-  end
-  if board.include?(' ') == false
-    puts 'GAME OVER!!!'
-    break
-  end
-
-  player2.play(board)
-  display(board)
-
-  if board[0] == board[1] && board[1] == board[2] && board[0] != ' '
-    winning = true
-    puts "Congratulations #{player2.name}, you won!"
-    break
-  elsif board[3] == board[4] && board[4] == board[5] && board[3] != ' '
-    winning = true
-    puts "Congratulations #{player2.name}, you won!"
-    break
-  elsif board[6] == board[7] && board[7] == board[8] && board[6] != ' '
-    winning = true
-    puts "Congratulations #{player2.name}, you won!"
-    break
-  elsif board[0] == board[3] && board[3] == board[6] && board[0] != ' '
-    winning = true
-    puts "Congratulations #{player2.name}, you won!"
-    break
-  elsif board[1] == board[4] && board[4] == board[7] && board[1] != ' '
-    winning = true
-    puts "Congratulations #{player2.name}, you won!"
-    break
-  elsif board[2] == board[5] && board[5] == board[8] && board[2] != ' '
-    winning = true
-    puts "Congratulations #{player2.name}, you won!"
-    break
-  elsif board[0] == board[4] && board[4] == board[8] && board[0] != ' '
-    winning = true
-    puts "Congratulations #{player2.name}, you won!"
-    break
-  elsif board[2] == board[4] && board[4] == board[6] && board[2] != ' '
-    winning = true
-    puts "Congratulations #{player2.name}, you won!"
-    break
-  end
-  if board.include?(' ') == false
-    puts 'GAME OVER!!!'
-    break
-  end
-
-end
+player1.play(board)
+new_board_game.display(board)
+player2.play(board)
+new_board_game.display(board)
 
 # rubocop:enable Metrics/PerceivedComplexity
