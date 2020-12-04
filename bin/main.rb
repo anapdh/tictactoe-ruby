@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/AbcSize
 
 require_relative '../lib/player'
 require_relative '../lib/rules'
@@ -68,4 +67,3 @@ end
 
 # rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/AbcSize
