@@ -21,6 +21,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   rubocop (~> 0.81.0)
