@@ -7,4 +7,5 @@ class Player
     @symbol = symbol
   end
 end
+
 # rubocop:enable Metrics/PerceivedComplexity
