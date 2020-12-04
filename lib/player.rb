@@ -1,4 +1,5 @@
 # Class for Players
+
 class Player
   attr_accessor :name, :symbol
 

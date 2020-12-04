@@ -11,8 +11,8 @@ class Game
   attr_reader :player1, :player2
 
   def initialize(player1, player2)
-    @player1 =  Player.new(player1, 'X')
-    @player2 =  Player.new(player2, 'O')
+    @player1 = Player.new(player1, 'X')
+    @player2 = Player.new(player2, 'O')
   end
 
   def valid?(pos)
