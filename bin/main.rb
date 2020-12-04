@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# rubocop:disable Metrics/PerceivedComplexity
 
 require_relative '../lib/player'
 require_relative '../lib/rules'
@@ -17,7 +18,6 @@ board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 game_on = true
 turn = true
 
-
 game_rules = Rules.new
 puts 'Would you like to read the game rules/instructions? (yes, no)'
 answer = gets.chomp
@@ -30,35 +30,37 @@ puts "Please, enter name of Player 'X':"
 player1 = gets.chomp
 puts "Please, enter name of Player 'O':"
 player2 = gets.chomp
-game = Game.new(player1,player2)
+game = Game.new(player1, player2)
 display(board)
 
 while game_on
+  puts turn ? "#{player1} is playing... \n
+  CHOOSE YOUR POSITION \n " : "#{player2} is playing... \n
+  CHOOSE YOUR POSITION \n "
   pos = gets.chomp
   if game.valid?(pos)
-
-
-    if game.free?(pos, board) == true
-      puts "TRUE"
-      game.move(pos,board, turn)
-    elsif game.free?(pos, board) == false
-      puts "POSITION #{pos} TAKEN! Please, Try again."
+    case game.free?(pos, board)
+    when true
+      game.move(pos, board, turn)
+    when false
+      puts " \n POSITION #{pos} TAKEN! Please, Try again."
       display(board)
       next
     end
-
   else
-    puts "INVALID NUMBER! Please, Try again."
-    game.move(pos,board, turn)
+    puts " \n INVALID NUMBER! Please, Try again."
+    game.move(pos, board, turn)
   end
   display(board)
   turn = !turn
   if game.did_win?(board)
-    puts turn ? "#{player1} Won" : "#{player2} Won"
+    puts turn ? " \n #{player1} Won! CONGRATULATIONS!!! \n " : " \n #{player2} Won! CONGRATULATIONS!!! \n "
     break
   end
   if game.did_draw?(board)
-    puts "GAME OVER"
+    puts " \n No spaces left. GAME OVER!! \n "
     break
   end
 end
+
+# rubocop:enable Metrics/PerceivedComplexity
