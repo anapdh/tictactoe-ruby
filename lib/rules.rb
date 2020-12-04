@@ -1,3 +1,4 @@
+
 # Class for Game rules
 
 class Rules
