@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 # rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Metrics/CyclomaticComplexity
 

@@ -7,6 +7,7 @@ require_relative './player'
 require_relative './rules'
 
 # Class for game
+
 class Game
   attr_reader :player1, :player2
 

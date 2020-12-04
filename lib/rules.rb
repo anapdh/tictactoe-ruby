@@ -1,4 +1,5 @@
 # Class for Game rules
+
 class Rules
   attr_reader :rules
 
