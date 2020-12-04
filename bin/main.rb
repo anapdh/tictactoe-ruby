@@ -34,9 +34,13 @@ game = Game.new(player1, player2)
 display(board)
 
 while game_on
-  puts turn ? "#{player1} is playing... \n
-  CHOOSE YOUR POSITION \n " : "#{player2} is playing... \n
+  puts if turn
+  "#{player1} is playing... \n
   CHOOSE YOUR POSITION \n "
+else
+  "#{player2} is playing... \n
+  CHOOSE YOUR POSITION \n "
+end
   pos = gets.chomp
   if game.valid?(pos)
     case game.free?(pos, board)

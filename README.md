@@ -1,66 +1,70 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+#!/usr/bin/env ruby
+# rubocop:disable Metrics/PerceivedComplexity
 
-# Tic Tac Toe
+require_relative '../lib/player'
+require_relative '../lib/rules'
+require_relative '../lib/game'
 
-This project consists of building a Ruby version of Tic Tac Toe game [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) using **Ruby**.
+def display(board)
+  puts "
+      #{board[6] == ' ' ? 7 : board[6]} | #{board[7] == ' ' ? 8 : board[7]} | #{board[8] == ' ' ? 9 : board[8]}
+      -----------
+      #{board[3] == ' ' ? 4 : board[3]} | #{board[4] == ' ' ? 5 : board[4]} | #{board[5] == ' ' ? 6 : board[5]}
+      -----------
+      #{board[0] == ' ' ? 1 : board[0]} | #{board[1] == ' ' ? 2 : board[1]} | #{board[2] == ' ' ? 3 : board[2]}"
+end
+board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-## About the project
+game_on = true
+turn = true
 
-The goal was to use **classes** and **methods** to set up the basic elements of the game.
+game_rules = Rules.new
+puts 'Would you like to read the game rules/instructions? (yes, no)'
+answer = gets.chomp
+if answer == 'yes'
+  puts game_rules.display_rules
+else
+  puts "\n Ok, let's start the game! \n "
+end
+puts "Please, enter name of Player 'X':"
+player1 = gets.chomp
+puts "Please, enter name of Player 'O':"
+player2 = gets.chomp
+game = Game.new(player1, player2)
+display(board)
 
-The specifications for this project can be found at [The Odin Project](https://www.theodinproject.com/courses/ruby-programming/lessons/oop).
+while game_on
+  puts if turn
+  "#{player1} is playing... \n
+  CHOOSE YOUR POSITION \n "
+else
+  "#{player2} is playing... \n
+  CHOOSE YOUR POSITION \n "
+end
+  pos = gets.chomp
+  if game.valid?(pos)
+    case game.free?(pos, board)
+    when true
+      game.move(pos, board, turn)
+    when false
+      puts " \n POSITION #{pos} TAKEN! Please, Try again."
+      display(board)
+      next
+    end
+  else
+    puts " \n INVALID NUMBER! Please, Try again."
+    game.move(pos, board, turn)
+  end
+  display(board)
+  turn = !turn
+  if game.did_win?(board)
+    puts turn ? " \n #{player1} Won! CONGRATULATIONS!!! \n " : " \n #{player2} Won! CONGRATULATIONS!!! \n "
+    break
+  end
+  if game.did_draw?(board)
+    puts " \n No spaces left. GAME OVER!! \n "
+    break
+  end
+end
 
-## Installation
-
-No instalation needed, just download/clone this repository [GitHub Repository](https://github.com/anapdh/TicTacToe-Ruby) on your computer.
-
-## How to play
-
-1. The interface of this game will be your computer's terminal. Search _terminal_ in your computer to open it.
-2. In the terminal, use the command `cd` to go to the place where you have saved/cloned the Tic Tac Toe repository. For example: _Desktop/User/tic-tac-toe/_. 
-You may use the comand `ls` to see the files and repositories exitent in your current location.
-3. Now, use the comand `cd bin` again to enter the folder and execute `ruby main.rb` in the terminal to start the game.
-4. Enjoy the game!
-
-## Game rules
-
-1. Type the name of Player1, which will be signed to the symbol 'X';
-2. Type the name of Player2, which will be signed to the symbol 'O';
-3. Now the first player ('X') can select any space to insert the value, follow your number keyboard to compare the available spaces:
->        7 | 8 | 9
->        -----------
->        4 | 5 | 6	--> The number in the virtual board will be represented by the number on your keyboard.
->        -----------
->        1 | 2 | 3
-4. Remember not to insert any invalid number (above 9) or repeat the same number that is already taken by a symbol (no cheating!!);
-5. The winner will be the first player/symbol to complete a sequence of a row, column, or diagonal.
-
-## Authors
-
-👩🏼‍💻 **Ana Paula Hübner**
-
-- GitHub: [@anapdh](https://github.com/anapdh)
-- Twitter: [@anapdh](https://twitter.com/anapdh)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ana-paula-hübner-7a9484181)
-
-😎 **Abdo Amin**
-- GitHub: [@Abdelrhman-Amin](https://github.com/AbdelrhmanAmin)
-- Twitter: [@Abdo Amin](https://twitter.com/AbdoAmi60489112)
-- LinkedIn: [@Abdo Amin](https://www.linkedin.com/in/abdo-amin-ab786a1b0/)
-
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/anapdh/enumerable-methods/issues).
-
-
-## Show your support
-
-Give a ⭐️ if you like this project!
-
-
-## 📝 License
-
-This project is [MIT](./LICENSE) licensed.
+# rubocop:enable Metrics/PerceivedComplexity
