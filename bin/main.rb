@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/AbcSize
 
 require_relative '../lib/player'
 require_relative '../lib/rules'
@@ -14,17 +16,16 @@ def display(board)
       #{board[0] == ' ' ? 1 : board[0]} | #{board[1] == ' ' ? 2 : board[1]} | #{board[2] == ' ' ? 3 : board[2]}"
 end
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
 game_on = true
 turn = true
-
 game_rules = Rules.new
-puts 'Would you like to read the game rules/instructions? (yes, no)'
-answer = gets.chomp
-if answer == 'yes'
-  puts game_rules.display_rules
-else
+puts "Would you like to read the game rules/instructions?
+(All answers are accepted! [EASTER EGGS!! Excuslive For Christmas!!], ONLY 'no' Will work!)"
+answer = gets.chomp.to_s.downcase
+if answer == 'no'
   puts " \n Ok, let's start the game! \n "
+else
+  puts game_rules.display_rules
 end
 puts "Please, enter name of Player 'X':"
 player1 = gets.chomp
@@ -32,29 +33,18 @@ puts "Please, enter name of Player 'O':"
 player2 = gets.chomp
 game = Game.new(player1, player2)
 display(board)
-
 while game_on
-if turn
-  puts "#{player1} is playing... \n
-  CHOOSE YOUR POSITION \n "
-else
-  puts "#{player2} is playing... \n
-  CHOOSE YOUR POSITION \n "
-end
-
-pos = gets.chomp
+  if turn
+    puts "#{player1} is playing...
+    CHOOSE YOUR POSITION \n "
+  else
+    puts "#{player2} is playing...
+    CHOOSE YOUR POSITION \n "
+  end
+  pos = gets.chomp
   if game.valid?(pos)
-    # case game.free?(pos, board)
-    # when true
-    #   game.move(pos, board, turn)
-    # when false
-    #   puts " \n POSITION #{pos} TAKEN! Please, Try again."
-    #   display(board)
-    #   next
-    # end
     if game.free?(pos, board) == true
-      puts "TRUE"
-      game.move(pos,board, turn)
+      game.move(pos, board, turn)
     elsif game.free?(pos, board) == false
       puts "POSITION #{pos} TAKEN! Please, Try again."
       display(board)
@@ -62,20 +52,20 @@ pos = gets.chomp
     end
   else
     puts " \n INVALID NUMBER! Please, Try again."
-    game.move(pos, board, turn)
+    next
   end
-
   display(board)
-  turn = !turn
   if game.did_win?(board)
     puts turn ? " \n #{player1} Won! CONGRATULATIONS!!! \n " : " \n #{player2} Won! CONGRATULATIONS!!! \n "
     break
   end
-
   if game.did_draw?(board)
     puts " \n No spaces left. GAME OVER!! \n "
     break
   end
+  turn = !turn
 end
 
 # rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/AbcSize

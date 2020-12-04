@@ -1,4 +1,5 @@
 # Class for Game rules
+# rubocop:disable Metrics/MethodLength
 class Rules
   attr_reader :rules
 
@@ -24,3 +25,4 @@ class Rules
     Good luck and have fun! :) \n "
   end
 end
+# rubocop:enable Metrics/MethodLength
