@@ -1,6 +1,6 @@
-
 # Class for Game rules
 
+# frozen_string_literal: true
 class Rules
   attr_reader :rules
 
