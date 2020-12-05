@@ -59,7 +59,7 @@ while game_on
     break
   end
   if game.did_draw?(board)
-    puts " \n No spaces left. GAME OVER!! \n "
+    puts " \n IT'S A DRAW! Game is over, but you can always return. \n "
     break
   end
   turn = !turn
