@@ -22,7 +22,7 @@ puts "Would you like to read the game rules/instructions?
 (All answers are accepted! [EASTER EGGS!! Excuslive For Christmas!!], ONLY 'no' Will work!)"
 answer = gets.chomp.to_s.downcase
 if answer == 'no'
-  puts " \n Ok, let's start the game! \n "
+  puts " \r\n Ok, let's start the game! \r\n "
 else
   puts game_rules.display_rules
 end
@@ -35,10 +35,10 @@ display(board)
 while game_on
   if turn
     puts "#{player1} is playing...
-    CHOOSE YOUR POSITION \n "
+    CHOOSE YOUR POSITION \r\n "
   else
     puts "#{player2} is playing...
-    CHOOSE YOUR POSITION \n "
+    CHOOSE YOUR POSITION \r\n "
   end
   pos = gets.chomp
   if game.valid?(pos)
@@ -50,16 +50,16 @@ while game_on
       next
     end
   else
-    puts " \n INVALID NUMBER! Please, Try again."
+    puts " \r\n INVALID NUMBER! Please, Try again."
     next
   end
   display(board)
   if game.did_win?(board)
-    puts turn ? " \n #{player1} Won! CONGRATULATIONS!!! \n " : " \n #{player2} Won! CONGRATULATIONS!!! \n "
+    puts turn ? " \r\n #{player1} Won! CONGRATULATIONS!!! \r\n " : " \r\n #{player2} Won! CONGRATULATIONS!!! \r\n "
     break
   end
   if game.did_draw?(board)
-    puts " \n No spaces left. GAME OVER!! \n "
+    puts " \r\n No spaces left. GAME OVER!! \r\n "
     break
   end
   turn = !turn
