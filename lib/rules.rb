@@ -1,5 +1,4 @@
 # Class to initialize RULES
-
 class Rules
   attr_reader :rules
 

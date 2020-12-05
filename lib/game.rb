@@ -2,11 +2,11 @@
 # rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/AbcSize
-# Class to initialize game.
 
 require_relative './player'
 require_relative './rules'
 
+# Class to initialize game.
 class Game
   attr_reader :player1, :player2
 
