@@ -1,5 +1,4 @@
-# rubocop:disable Layout/EndOfLine
-# rubocop:disable Style/Documentation
+# Class to initialize RULES
 
 class Rules
   attr_reader :rules
@@ -26,6 +25,3 @@ class Rules
     Good luck and have fun! :) \n "
   end
 end
-
-# rubocop:enable Layout/EndOfLine
-# rubocop:enable Style/Documentation

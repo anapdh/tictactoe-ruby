@@ -1,5 +1,4 @@
-# rubocop:disable Layout/EndOfLine
-# rubocop:disable Style/Documentation
+# Class for player
 
 class Player
   attr_accessor :name, :symbol
@@ -9,5 +8,3 @@ class Player
     @symbol = symbol
   end
 end
-# rubocop:enable Layout/EndOfLine
-# rubocop:enable Style/Documentation
