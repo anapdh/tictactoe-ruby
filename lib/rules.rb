@@ -1,6 +1,6 @@
-# Class for Game rules
+# rubocop:disable Layout/EndOfLine
+# rubocop:disable Style/Documentation
 
-# frozen_string_literal: true
 class Rules
   attr_reader :rules
 
@@ -26,3 +26,6 @@ class Rules
     Good luck and have fun! :) \n "
   end
 end
+
+# rubocop:enable Layout/EndOfLine
+# rubocop:enable Style/Documentation

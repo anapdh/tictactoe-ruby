@@ -1,6 +1,5 @@
-# Class for Players
-
-# frozen_string_literal: true
+# rubocop:disable Layout/EndOfLine
+# rubocop:disable Style/Documentation
 
 class Player
   attr_accessor :name, :symbol
@@ -10,3 +9,5 @@ class Player
     @symbol = symbol
   end
 end
+# rubocop:enable Layout/EndOfLine
+# rubocop:enable Style/Documentation

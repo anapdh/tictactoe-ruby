@@ -1,9 +1,7 @@
-
 #!/usr/bin/env ruby
-
-# frozen_string_literal: true
 # rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Layout/EndOfLine
 
 require_relative '../lib/player'
 require_relative '../lib/rules'
@@ -70,3 +68,4 @@ end
 
 # rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Layout/EndOfLine

@@ -1,14 +1,12 @@
 # rubocop:disable Style/RedundantReturn
-
-# frozen_string_literal: true
 # rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/AbcSize
+# rubocop:disable Layout/EndOfLine
+# rubocop:disable Style/Documentation
 
 require_relative './player'
 require_relative './rules'
-
-# Class for game
 
 class Game
   attr_reader :player1, :player2
@@ -58,3 +56,5 @@ end
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Metrics/AbcSize
+# rubocop:enable Layout/EndOfLine
+# rubocop:enable Style/Documentation
