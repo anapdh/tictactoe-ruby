@@ -1,7 +1,8 @@
 require_relative '../lib/game.rb'
 
 describe Game do
-
+  let (:arr1) {[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']}
+  let (:arr2) {[' ', ' ', ' ', 'O', ' ', 'X', ' ', 'O', 'X']}
   let(:player1) { 'Name1' }
   let(:player2) { 'Name2' }
   let(:game) { Game.new(player1, player2) }
@@ -32,8 +33,7 @@ describe Game do
   end
 
   context 'free?' do
-    let (:arr1) {[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']}
-    let (:arr2) {[' ', ' ', ' ', 'O', ' ', 'X', ' ', 'O', 'X']}
+
    it 'check if the position is free' do
     expect(game.free?(2,arr1)).to eql(true)
     expect(game.free?(8,arr2)).to eql(false)
@@ -43,4 +43,13 @@ describe Game do
     expect(game.free?(-2,arr1)).to eql(arr1)
    end
   end
+
+  context 'move'
+  it 'checks the players turns to fill symbols'
+  expect (game.move(1,))
+  def move(pos, arr, turn)
+    pos = pos.to_i - 1
+    arr[pos] = turn == true ? player1.symbol : player2.symbol
+  end
+
 end
