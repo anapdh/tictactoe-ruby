@@ -1,8 +1,4 @@
 #!/usr/bin/env ruby
-# rubocop:disable Style/RedundantReturn
-# rubocop:disable Metrics/PerceivedComplexity
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/AbcSize
 
 require_relative '../lib/game'
 
@@ -96,7 +92,4 @@ describe Game do
   end
 end
 
-# rubocop:enable Style/RedundantReturn
-# rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/PerceivedComplexity
-# rubocop:enable Metrics/AbcSize
+
