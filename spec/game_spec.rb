@@ -44,12 +44,15 @@ describe Game do
    end
   end
 
-  context 'move'
-  it 'checks the players turns to fill symbols'
-  expect (game.move(1,))
-  def move(pos, arr, turn)
-    pos = pos.to_i - 1
-    arr[pos] = turn == true ? player1.symbol : player2.symbol
+  context 'move' do
+    it 'checks the players turns to fill symbols' do
+      expect(game.move(1,arr1,true)).to eql(game.player1.symbol)
+      expect(game.move(3,arr2,false)).to eql(game.player2.symbol)
+      expect(game.move(8,arr1,true)).to eql(game.player1.symbol)
+      expect(game.move(4,arr2,false)).to eql(game.player2.symbol)
+      expect(game.move('rwfffaa',arr2,false)).to eql(game.player2.symbol)
+      expect(game.move('dwafffa','jdjas',false)).to eql(game.player2.symbol)
+    end
   end
 
 end
