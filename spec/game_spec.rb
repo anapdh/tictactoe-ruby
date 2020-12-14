@@ -55,4 +55,41 @@ describe Game do
     end
   end
 
+  context 'winning_conditions' do
+    it 'checks if the players symbols are the same in 1st, 2nd or 3rd row to win the game' do
+      game.move(1, arr1, true)
+      game.move(2, arr1, true)
+      game.move(3, arr1, true)
+      expect(game.did_win?(arr1)).to eql(true)
+    end
+    it 'checks if the players symbols are the same in 1st, 2nd or 3rd column to win the game' do
+      game.move(8, arr1, true)
+      game.move(5, arr1, true)
+      game.move(2, arr1, true)
+      expect(game.did_win?(arr1)).to eql(true)
+    end
+      it 'checks if the players symbols are the same in the diagonals to win the game' do
+        game.move(7, arr1, true)
+        game.move(5, arr1, true)
+        game.move(3, arr1, true)
+      expect(game.did_win?(arr1)).to eql(true)
+    end
+      it 'checks if the players symbols are NOT the same in the diagonals, returning nil' do
+        game.move(7, arr1, true)
+        game.move(5, arr1, false)
+        game.move(3, arr1, true)
+      expect(game.did_win?(arr1)).to eql(nil)
+    end
+  end
+
+  context 'draw_condition' do
+    let(:arr1) {['X', '0', 'X', '0', '0', 'X', 'X', '0', '0']}
+    it "check if there's no more empty spaces on the board, so it's a draw" do
+      expect(game.did_draw?(arr1)).to eql(true)
+    end
+    let(:arr2) {[' ', '0', 'X', '0', ' ', 'X', 'X', '0', '0']}
+    it "check if there's IS empty spaces on the board" do
+      expect(game.did_draw?(arr2)).to eql(nil)
+    end
+  end
 end
