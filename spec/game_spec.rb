@@ -4,7 +4,6 @@ describe Game do
 
   let(:player1) { 'Name1' }
   let(:player2) { 'Name2' }
-  # let(:symbol)
   let(:game) { Game.new(player1, player2) }
 
 
@@ -20,5 +19,28 @@ describe Game do
       expect(game.player2.symbol).to eql ('O')
     end
 
+  end
+
+  context 'valid?' do
+    it 'checks valid position' do
+      expect(game.valid?(6)).to eql(true)    
+      expect(game.valid?(11)).to eql(false)
+      expect(game.valid?(-2)).to eql(false)
+      expect(game.valid?('q')).to eql(false)
+      expect(game.valid?('q')).to eql(false)
+    end
+  end
+
+  context 'free?' do
+    let (:arr1) {[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']}
+    let (:arr2) {[' ', ' ', ' ', 'O', ' ', 'X', ' ', 'O', 'X']}
+   it 'check if the position is free' do
+    expect(game.free?(2,arr1)).to eql(true)
+    expect(game.free?(8,arr2)).to eql(false)
+    expect(game.free?(4,arr2)).to eql(false)
+    expect(game.free?('r',arr1)).to eql(arr1)
+    expect(game.free?('r',arr2)).to eql(arr2)
+    expect(game.free?(-2,arr1)).to eql(arr1)
+   end
   end
 end
